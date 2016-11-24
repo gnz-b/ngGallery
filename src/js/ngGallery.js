@@ -40,8 +40,10 @@
             '  <div class="uil-ring-css" ng-show="loading"><div></div></div>' +
             '<a href="{{getImageDownloadSrc()}}" target="_blank" ng-show="showImageDownloadButton()" class="download-image"><i class="fa fa-download"></i></a>' +
             '  <a class="close-popup" ng-click="closeGallery()"><i class="fa fa-close"></i></a>' +
+            '  <a class="rotate-left" ng-click="rotationImg(0)"><i class="fa fa-rotate-right"></i></a>' +
+            '  <a class="rotate-right" ng-click="rotationImg(1)"><i class="fa fa-rotate-left"></i></a>' +
             '  <a class="nav-left" ng-click="prevImage()"><i class="fa fa-angle-left"></i></a>' +
-            '  <img ondragstart="return false;" draggable="false" ng-src="{{ img }}" ng-click="nextImage()" ng-show="!loading" class="effect" />' +
+            '  <img id="gallery_img" ondragstart="return false;" draggable="false" ng-src="{{ img }}" ng-click="nextImage()" ng-show="!loading" class="effect" />' +
             '  <a class="nav-right" ng-click="nextImage()"><i class="fa fa-angle-right"></i></a>' +
             '  <span class="info-text">{{ index + 1 }}/{{ images.length }} - {{ description }}</span>' +
             '  <div class="ng-thumbnails-wrapper">' +
@@ -172,10 +174,62 @@
                     });
                 };
 
+
+                /*
+                 * 解析matrix矩阵，0°-360°，返回旋转角度
+                 * 当a=b||-a=b,0<=deg<=180
+                 * 当-a+b=180,180<=deg<=270
+                 * 当a+b=180,270<=deg<=360
+                 *
+                 * 当0<=deg<=180,deg=d;
+                 * 当180<deg<=270,deg=180+c;
+                 * 当270<deg<=360,deg=360-(c||d);
+                 * */
+                function getmatrix(a,b,c,d,e,f){
+                    var aa=Math.round(180*Math.asin(a)/ Math.PI);
+                    var bb=Math.round(180*Math.acos(b)/ Math.PI);
+                    var cc=Math.round(180*Math.asin(c)/ Math.PI);
+                    var dd=Math.round(180*Math.acos(d)/ Math.PI);
+                    var deg=0;
+                    if(aa==bb||-aa==bb){
+                        deg=dd;
+                    }else if(-aa+bb==180){
+                        deg=180+cc;
+                    }else if(aa+bb==180){
+                        deg=360-cc||360-dd;
+                    }
+                    return deg>=360?0:deg;
+                    //return (aa+','+bb+','+cc+','+dd);
+                }
+
+                //$('#gallery_img').css('transform')  返回 getmatrix 矩阵
                 scope.closeGallery = function () {
                     scope.opened = false;
                     if (scope.hideOverflow) {
                         $('body').css({overflow: ''});
+                    }
+                    $('#gallery_img').css({'transform':'rotate(0deg)'});
+                    $('#gallery_img').css({'-ms-transform':'rotate(0deg)'});
+                    $('#gallery_img').css({'-moz-transform':'rotate(0deg)'});
+                    $('#gallery_img').css({'-webkit-transform':'rotate(0deg)'});
+                    $('#gallery_img').css({'-o-transform':'rotate(0deg)'});
+                };
+
+                // direction 左转 0  右转  1
+                scope.rotationImg = function (direction) {
+                    var deg = eval('get'+$('#gallery_img').css('transform'));
+                    if(direction === 1){
+                        $('#gallery_img').css({'transform':'rotate('+(deg - 90)%360+'deg)'});
+                        $('#gallery_img').css({'-ms-transform':'rotate('+(deg - 90)%360+'deg)'});
+                        $('#gallery_img').css({'-moz-transform':'rotate('+(deg - 90)%360+'deg)'});
+                        $('#gallery_img').css({'-webkit-transform':'rotate('+(deg - 90)%360+'deg)'});
+                        $('#gallery_img').css({'-o-transform':'rotate('+(deg - 90)%360+'deg)'});
+                    }else if(direction === 0){
+                        $('#gallery_img').css({'transform':'rotate('+(deg + 90)%360+'deg)'});
+                        $('#gallery_img').css({'-ms-transform':'rotate('+(deg + 90)%360+'deg)'});
+                        $('#gallery_img').css({'-moz-transform':'rotate('+(deg + 90)%360+'deg)'});
+                        $('#gallery_img').css({'-webkit-transform':'rotate('+(deg + 90)%360+'deg)'});
+                        $('#gallery_img').css({'-o-transform':'rotate('+(deg + 90)%360+'deg)'});
                     }
                 };
 

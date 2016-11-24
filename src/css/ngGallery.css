@@ -9,10 +9,10 @@ img.ng-thumb {
   float: left;
   display: block;
   cursor: pointer;
-  margin: 2px 2px 0 0; 
+  margin: 2px 2px 0 0;
 }
 
-.ng-overlay { 
+.ng-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -29,7 +29,7 @@ img.ng-thumb {
   -webkit-user-drag: none;
 }
 
-.ng-gallery-content { 
+.ng-gallery-content {
   position: fixed;
   top: 0;
   left: 0;
@@ -49,6 +49,30 @@ img.ng-thumb {
   position: absolute;
   top: 20px;
   right: 0;
+}
+
+.ng-gallery-content > a.rotate-left {
+    font-size: 42px;
+    float: right;
+    color: #fff;
+    text-decoration: none;
+    margin: 0 30px 0 0;
+    cursor: pointer;
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
+}
+
+.ng-gallery-content > a.rotate-right {
+    font-size: 42px;
+    float: right;
+    color: #fff;
+    text-decoration: none;
+    margin: 0 30px 0 0;
+    cursor: pointer;
+    position: absolute;
+    bottom: 30px;
+    right: 140px;
 }
 
 .ng-gallery-content > a.download-image {
@@ -92,7 +116,7 @@ img.ng-thumb {
   position: relative;
   display: block;
   margin: 0 auto 0 auto;
-  top: 50%;
+  top: 8%;
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
   cursor: pointer;
@@ -107,7 +131,9 @@ img.ng-thumb {
 .ng-gallery-content > img.effect {
   animation: fadeIn 0.5s;
 }
-
+#gallery_img{
+    transform: rotate(0deg);
+}
 @keyframes fadeIn {
     from { opacity: 0.3; }
       to { opacity: 1; }
@@ -153,7 +179,7 @@ img.ng-thumb {
   opacity: 0.6;
 }
 
-.ng-gallery-content > .ng-thumbnails-wrapper > .ng-thumbnails > div > img:hover, 
+.ng-gallery-content > .ng-thumbnails-wrapper > .ng-thumbnails > div > img:hover,
 .ng-gallery-content > .ng-thumbnails-wrapper > .ng-thumbnails > div > img.active {
   transition: opacity 0.25s ease;
   opacity: 1;
@@ -162,11 +188,11 @@ img.ng-thumb {
 /* Loading - from http://loading.io */
 uiload {
   display: inline-block;
-  position: relative; 
+  position: relative;
 }
 
 uiload > div {
-    position: relative; 
+    position: relative;
 }
 
 @-webkit-keyframes uil-ring-anim {
@@ -175,7 +201,7 @@ uiload > div {
     -moz-transform: rotate(0deg);
     -webkit-transform: rotate(0deg);
     -o-transform: rotate(0deg);
-    transform: rotate(0deg); 
+    transform: rotate(0deg);
   }
 
   100% {
@@ -183,8 +209,8 @@ uiload > div {
     -moz-transform: rotate(360deg);
     -webkit-transform: rotate(360deg);
     -o-transform: rotate(360deg);
-    transform: rotate(360deg); 
-  } 
+    transform: rotate(360deg);
+  }
 }
 
 @-moz-keyframes uil-ring-anim {
@@ -193,7 +219,7 @@ uiload > div {
     -moz-transform: rotate(0deg);
     -webkit-transform: rotate(0deg);
     -o-transform: rotate(0deg);
-    transform: rotate(0deg); 
+    transform: rotate(0deg);
   }
 
   100% {
@@ -201,8 +227,8 @@ uiload > div {
     -moz-transform: rotate(360deg);
     -webkit-transform: rotate(360deg);
     -o-transform: rotate(360deg);
-    transform: rotate(360deg); 
-    } 
+    transform: rotate(360deg);
+    }
 }
 
 @-ms-keyframes uil-ring-anim {
@@ -211,7 +237,7 @@ uiload > div {
     -moz-transform: rotate(0deg);
     -webkit-transform: rotate(0deg);
     -o-transform: rotate(0deg);
-    transform: rotate(0deg); 
+    transform: rotate(0deg);
   }
 
   100% {
@@ -219,8 +245,8 @@ uiload > div {
     -moz-transform: rotate(360deg);
     -webkit-transform: rotate(360deg);
     -o-transform: rotate(360deg);
-    transform: rotate(360deg); 
-  } 
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes uil-ring-anim {
@@ -229,7 +255,7 @@ uiload > div {
     -moz-transform: rotate(0deg);
     -webkit-transform: rotate(0deg);
     -o-transform: rotate(0deg);
-    transform: rotate(0deg); 
+    transform: rotate(0deg);
   }
 
   100% {
@@ -237,8 +263,8 @@ uiload > div {
     -moz-transform: rotate(360deg);
     -webkit-transform: rotate(360deg);
     -o-transform: rotate(360deg);
-    transform: rotate(360deg); 
-  } 
+    transform: rotate(360deg);
+  }
 }
 
 .uil-ring-css {
@@ -247,7 +273,7 @@ uiload > div {
   top: 0;
   margin: 180px auto 0 auto;
   width: 100px;
-  height: 100px; 
+  height: 100px;
 }
 
 .uil-ring-css > div {
@@ -263,5 +289,5 @@ uiload > div {
     -moz-animation: uil-ring-anim 1s linear infinite;
     -webkit-animation: uil-ring-anim 1s linear infinite;
     -o-animation: uil-ring-anim 1s linear infinite;
-    animation: uil-ring-anim 1s linear infinite; 
+    animation: uil-ring-anim 1s linear infinite;
 }
