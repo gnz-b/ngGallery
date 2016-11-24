@@ -52,7 +52,7 @@ img.ng-thumb {
 }
 
 .ng-gallery-content > a.rotate-left {
-    font-size: 42px;
+    font-size: 32px;
     float: right;
     color: #fff;
     text-decoration: none;
@@ -64,7 +64,7 @@ img.ng-thumb {
 }
 
 .ng-gallery-content > a.rotate-right {
-    font-size: 42px;
+    font-size: 32px;
     float: right;
     color: #fff;
     text-decoration: none;
