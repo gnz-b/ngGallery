@@ -43,7 +43,7 @@
             '  <a class="rotate-left" ng-click="rotationImg(0)"><i class="fa fa-rotate-right"></i></a>' +
             '  <a class="rotate-right" ng-click="rotationImg(1)"><i class="fa fa-rotate-left"></i></a>' +
             '  <a class="nav-left" ng-click="prevImage()"><i class="fa fa-angle-left"></i></a>' +
-            '  <img id="gallery_img" ondragstart="return false;" draggable="false" ng-src="{{ img }}" ng-click="nextImage()" ng-show="!loading" class="effect" />' +
+            '  <img id="gallery_img" ondragstart="return false;" draggable="false" ng-src="{{ img }}" ng-click="nextImage()" ng-show="!loading" class="effect test_gallery_img" />' +
             '  <a class="nav-right" ng-click="nextImage()"><i class="fa fa-angle-right"></i></a>' +
             '  <span class="info-text">{{ index + 1 }}/{{ images.length }} - {{ description }}</span>' +
             '  <div class="ng-thumbnails-wrapper">' +
@@ -133,11 +133,13 @@
                 };
 
                 scope.changeImage = function (i) {
+                    scope.cleanGallery();
                     scope.index = i;
                     showImage(i);
                 };
 
                 scope.nextImage = function () {
+                    scope.cleanGallery();
                     scope.index += 1;
                     if (scope.index === scope.images.length) {
                         scope.index = 0;
@@ -146,6 +148,7 @@
                 };
 
                 scope.prevImage = function () {
+                    scope.cleanGallery();
                     scope.index -= 1;
                     if (scope.index < 0) {
                         scope.index = scope.images.length - 1;
@@ -208,28 +211,41 @@
                     if (scope.hideOverflow) {
                         $('body').css({overflow: ''});
                     }
-                    $('#gallery_img').css({'transform':'rotate(0deg)'});
-                    $('#gallery_img').css({'-ms-transform':'rotate(0deg)'});
-                    $('#gallery_img').css({'-moz-transform':'rotate(0deg)'});
-                    $('#gallery_img').css({'-webkit-transform':'rotate(0deg)'});
-                    $('#gallery_img').css({'-o-transform':'rotate(0deg)'});
+                    scope.cleanGallery();
+                };
+
+                scope.cleanGallery = function () {
+                    $('img.test_gallery_img').css({'transform':'rotate(0deg)'});
+                    $('img.test_gallery_img').css({'-ms-transform':'rotate(0deg)'});
+                    $('img.test_gallery_img').css({'-moz-transform':'rotate(0deg)'});
+                    $('img.test_gallery_img').css({'-webkit-transform':'rotate(0deg)'});
+                    $('img.test_gallery_img').css({'-o-transform':'rotate(0deg)'});
+                    scope.deg = 0;
                 };
 
                 // direction 左转 0  右转  1
+                scope.deg = 0;
                 scope.rotationImg = function (direction) {
-                    var deg = eval('get'+$('#gallery_img').css('transform'));
+                    // if($('img.test_gallery_img').css('transform') !== "none"){
+                    //     //console.log($('#gallery_img').css('transform'));
+                    //     var deg = eval('get'+$('img.test_gallery_img').css('transform'));
+                    // }else{
+                    //
+                    // }
                     if(direction === 1){
-                        $('#gallery_img').css({'transform':'rotate('+(deg - 90)%360+'deg)'});
-                        $('#gallery_img').css({'-ms-transform':'rotate('+(deg - 90)%360+'deg)'});
-                        $('#gallery_img').css({'-moz-transform':'rotate('+(deg - 90)%360+'deg)'});
-                        $('#gallery_img').css({'-webkit-transform':'rotate('+(deg - 90)%360+'deg)'});
-                        $('#gallery_img').css({'-o-transform':'rotate('+(deg - 90)%360+'deg)'});
+                        $('img.test_gallery_img').css({'transform':'rotate('+(scope.deg - 90)%360+'deg)'});
+                        $('img.test_gallery_img').css({'-ms-transform':'rotate('+(scope.deg - 90)%360+'deg)'});
+                        $('img.test_gallery_img').css({'-moz-transform':'rotate('+(scope.deg - 90)%360+'deg)'});
+                        $('img.test_gallery_img').css({'-webkit-transform':'rotate('+(scope.deg - 90)%360+'deg)'});
+                        $('img.test_gallery_img').css({'-o-transform':'rotate('+(scope.deg - 90)%360+'deg)'});
+                        scope.deg -= 90;
                     }else if(direction === 0){
-                        $('#gallery_img').css({'transform':'rotate('+(deg + 90)%360+'deg)'});
-                        $('#gallery_img').css({'-ms-transform':'rotate('+(deg + 90)%360+'deg)'});
-                        $('#gallery_img').css({'-moz-transform':'rotate('+(deg + 90)%360+'deg)'});
-                        $('#gallery_img').css({'-webkit-transform':'rotate('+(deg + 90)%360+'deg)'});
-                        $('#gallery_img').css({'-o-transform':'rotate('+(deg + 90)%360+'deg)'});
+                        $('img.test_gallery_img').css({'transform':'rotate('+(scope.deg + 90)%360+'deg)'});
+                        $('img.test_gallery_img').css({'-ms-transform':'rotate('+(scope.deg + 90)%360+'deg)'});
+                        $('img.test_gallery_img').css({'-moz-transform':'rotate('+(scope.deg + 90)%360+'deg)'});
+                        $('img.test_gallery_img').css({'-webkit-transform':'rotate('+(scope.deg + 90)%360+'deg)'});
+                        $('img.test_gallery_img').css({'-o-transform':'rotate('+(scope.deg + 90)%360+'deg)'});
+                        scope.deg += 90;
                     }
                 };
 
