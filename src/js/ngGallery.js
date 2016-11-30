@@ -7,6 +7,7 @@
 
     function ngGallery($document, $timeout, $q, $templateCache) {
 
+        // test version
         var defaults = {
             baseClass: 'ng-gallery',
             thumbClass: 'ng-thumb',
