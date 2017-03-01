@@ -41,6 +41,8 @@
             '  <div class="uil-ring-css" ng-show="loading"><div></div></div>' +
             '<a href="{{getImageDownloadSrc()}}" target="_blank" ng-show="showImageDownloadButton()" class="download-image"><i class="fa fa-download"></i></a>' +
             '  <a class="close-popup" ng-click="closeGallery()"><i class="fa fa-close"></i></a>' +
+            '  <a class="zoom-minus" ng-click="zoomImage(0)"><i class="fa fa-search-minus"></i></a>'+
+            '  <a class="zoom-plus" ng-click="zoomImage(1)"><i class="fa fa-search-plus"></i></a>'+
             '  <a class="rotate-left" ng-click="rotationImg(0)"><i class="fa fa-rotate-right"></i></a>' +
             '  <a class="rotate-right" ng-click="rotationImg(1)"><i class="fa fa-rotate-left"></i></a>' +
             '  <a class="nav-left" ng-click="prevImage()"><i class="fa fa-angle-left"></i></a>' +
@@ -222,6 +224,7 @@
                     $('img.test_gallery_img').css({'-webkit-transform':'rotate(0deg)'});
                     $('img.test_gallery_img').css({'-o-transform':'rotate(0deg)'});
                     scope.deg = 0;
+                    scale = 0;
                 };
 
                 // direction 左转 0  右转  1
@@ -248,6 +251,21 @@
                         $('img.test_gallery_img').css({'-o-transform':'rotate('+(scope.deg + 90)%360+'deg)'});
                         scope.deg += 90;
                     }
+                };
+
+                /* type为1的时候 type为0*/
+                var scale = 1;
+                scope.zoomImage = function (type) {
+                    if (type) {
+                        scale += 0.1;
+                    } else {
+                        scale -= 0.1;
+                    }
+                    $('img.test_gallery_img').css({'transform':'scale('+scale+')'});
+                    $('img.test_gallery_img').css({'-ms-transform':'scale('+scale+')'});
+                    $('img.test_gallery_img').css({'-moz-transform':'scale('+scale+')'});
+                    $('img.test_gallery_img').css({'-webkit-transform':'scale('+scale+')'});
+                    $('img.test_gallery_img').css({'-o-transform':'scale('+scale+')'});
                 };
 
                 $body.bind('keydown', function (event) {

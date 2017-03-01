@@ -73,7 +73,33 @@ img.ng-thumb {
     cursor: pointer;
     position: absolute;
     bottom: 30px;
-    right: 140px;
+    right: 100px;
+    z-index: 20;
+}
+
+.ng-gallery-content > a.zoom-plus {
+    font-size: 32px;
+    float: right;
+    color: #fff;
+    text-decoration: none;
+    margin: 0 30px 0 0;
+    cursor: pointer;
+    position: absolute;
+    bottom: 30px;
+    right: 150px;
+    z-index: 20;
+}
+
+.ng-gallery-content > a.zoom-minus {
+    font-size: 32px;
+    float: right;
+    color: #fff;
+    text-decoration: none;
+    margin: 0 30px 0 0;
+    cursor: pointer;
+    position: absolute;
+    bottom: 30px;
+    right: 200px;
     z-index: 20;
 }
 
