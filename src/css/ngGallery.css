@@ -49,6 +49,7 @@ img.ng-thumb {
     position: absolute;
     top: 20px;
     right: 0;
+    z-index: 20;
 }
 
 .ng-gallery-content > a.rotate-left {
@@ -60,7 +61,7 @@ img.ng-thumb {
     cursor: pointer;
     position: absolute;
     bottom: 30px;
-    right: 40px;
+    right: 50px;
     z-index: 20;
 }
 

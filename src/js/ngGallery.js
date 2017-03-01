@@ -224,7 +224,7 @@
                     $('img.test_gallery_img').css({'-webkit-transform':'rotate(0deg)'});
                     $('img.test_gallery_img').css({'-o-transform':'rotate(0deg)'});
                     scope.deg = 0;
-                    scale = 0;
+                    scale = 1;
                 };
 
                 // direction 左转 0  右转  1
@@ -258,7 +258,7 @@
                 scope.zoomImage = function (type) {
                     if (type) {
                         scale += 0.1;
-                    } else {
+                    } else if (scale > 0.11) {
                         scale -= 0.1;
                     }
                     $('img.test_gallery_img').css({'transform':'scale('+scale+')'});
