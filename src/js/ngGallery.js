@@ -237,18 +237,18 @@
                     //
                     // }
                     if(direction === 1){
-                        $('img.test_gallery_img').css({'transform':'rotate('+(scope.deg - 90)%360+'deg)'});
-                        $('img.test_gallery_img').css({'-ms-transform':'rotate('+(scope.deg - 90)%360+'deg)'});
-                        $('img.test_gallery_img').css({'-moz-transform':'rotate('+(scope.deg - 90)%360+'deg)'});
-                        $('img.test_gallery_img').css({'-webkit-transform':'rotate('+(scope.deg - 90)%360+'deg)'});
-                        $('img.test_gallery_img').css({'-o-transform':'rotate('+(scope.deg - 90)%360+'deg)'});
+                        $('img.test_gallery_img').css({'transform':'scale('+scale+') rotate('+(scope.deg - 90)%360+'deg)'});
+                        $('img.test_gallery_img').css({'-ms-transform':'scale('+scale+') rotate('+(scope.deg - 90)%360+'deg)'});
+                        $('img.test_gallery_img').css({'-moz-transform':'scale('+scale+') rotate('+(scope.deg - 90)%360+'deg)'});
+                        $('img.test_gallery_img').css({'-webkit-transform':'scale('+scale+') rotate('+(scope.deg - 90)%360+'deg)'});
+                        $('img.test_gallery_img').css({'-o-transform':'scale('+scale+') rotate('+(scope.deg - 90)%360+'deg)'});
                         scope.deg -= 90;
                     }else if(direction === 0){
-                        $('img.test_gallery_img').css({'transform':'rotate('+(scope.deg + 90)%360+'deg)'});
-                        $('img.test_gallery_img').css({'-ms-transform':'rotate('+(scope.deg + 90)%360+'deg)'});
-                        $('img.test_gallery_img').css({'-moz-transform':'rotate('+(scope.deg + 90)%360+'deg)'});
-                        $('img.test_gallery_img').css({'-webkit-transform':'rotate('+(scope.deg + 90)%360+'deg)'});
-                        $('img.test_gallery_img').css({'-o-transform':'rotate('+(scope.deg + 90)%360+'deg)'});
+                        $('img.test_gallery_img').css({'transform':'scale('+scale+') rotate('+(scope.deg + 90)%360+'deg)'});
+                        $('img.test_gallery_img').css({'-ms-transform':'scale('+scale+') rotate('+(scope.deg + 90)%360+'deg)'});
+                        $('img.test_gallery_img').css({'-moz-transform':'scale('+scale+') rotate('+(scope.deg + 90)%360+'deg)'});
+                        $('img.test_gallery_img').css({'-webkit-transform':'scale('+scale+') rotate('+(scope.deg + 90)%360+'deg)'});
+                        $('img.test_gallery_img').css({'-o-transform':'scale('+scale+') rotate('+(scope.deg + 90)%360+'deg)'});
                         scope.deg += 90;
                     }
                 };
@@ -261,11 +261,11 @@
                     } else if (scale > 0.11) {
                         scale -= 0.1;
                     }
-                    $('img.test_gallery_img').css({'transform':'scale('+scale+')'});
-                    $('img.test_gallery_img').css({'-ms-transform':'scale('+scale+')'});
-                    $('img.test_gallery_img').css({'-moz-transform':'scale('+scale+')'});
-                    $('img.test_gallery_img').css({'-webkit-transform':'scale('+scale+')'});
-                    $('img.test_gallery_img').css({'-o-transform':'scale('+scale+')'});
+                    $('img.test_gallery_img').css({'transform':'scale('+scale+') rotate('+scope.deg%360+'deg'});
+                    $('img.test_gallery_img').css({'-ms-transform':'scale('+scale+') rotate('+scope.deg%360+'deg'});
+                    $('img.test_gallery_img').css({'-moz-transform':'scale('+scale+') rotate('+scope.deg%360+'deg'});
+                    $('img.test_gallery_img').css({'-webkit-transform':'scale('+scale+') rotate('+scope.deg%360+'deg'});
+                    $('img.test_gallery_img').css({'-o-transform':'scale('+scale+') rotate('+scope.deg%360+'deg'});
                 };
 
                 $body.bind('keydown', function (event) {
